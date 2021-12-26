@@ -12,7 +12,7 @@ microservis mantiginda calisacak Rehber.Api ve Report.APi adinda iki proje olust
 
 microservislerin ortak olarak kullanabilecegi, entitylerin tanimlandigi Rehber.Data projesi olusturuldu.
 
-Rehber.Data projesine 
+Rehber.Data ve Rehber.Api projelerine
 EntityFramewrokCore ve Npgsql.EntityFrameworkCore.PostgreSQL kutuphaneleri eklendi.
 
 Microsoft.EntityFrameworkCore.Design
@@ -21,4 +21,10 @@ Microsoft.EntityFrameworkCore.Design
  
 dotnet ef database update komutu ile veri tabaninda tablolar olsuturuldu.
 
+Rehber.Api projesine 
+AutoMapper kutuphanesi eklendi.
+
+tablolarda bulunan eksik kolonlar eklendi.
+dotnet ef migrations add AddColumntoTables --project ../Rehber.Data/Rehber.Data.csproj
+dotnet ef database update
 
