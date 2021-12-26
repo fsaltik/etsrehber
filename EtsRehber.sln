@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rehber.Api", "Rehber.Api\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report.Api", "Report.Api\Report.Api.csproj", "{B3F647F4-86AA-4910-97EA-69D83B13CE04}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rehber.Data", "Rehber.Data\Rehber.Data.csproj", "{21983C14-022B-49D3-928A-9B817EDBF827}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{B3F647F4-86AA-4910-97EA-69D83B13CE04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3F647F4-86AA-4910-97EA-69D83B13CE04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3F647F4-86AA-4910-97EA-69D83B13CE04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21983C14-022B-49D3-928A-9B817EDBF827}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21983C14-022B-49D3-928A-9B817EDBF827}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21983C14-022B-49D3-928A-9B817EDBF827}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21983C14-022B-49D3-928A-9B817EDBF827}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
