@@ -6,6 +6,6 @@ public class BaseEntity
 {
     [Key]
     public Guid UUID { get; set; }
-    public DateTime CreateDateTime { get; set; }
-    public DateTime UpdateDateTime { get; set; } = DateTime.Now;
+    public DateTime CreatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; } = DateTime.Now;
 }
