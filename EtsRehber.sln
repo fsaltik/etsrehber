@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rehber.Api", "Rehber.Api\Rehber.Api.csproj", "{3D423DAC-A70B-4A5A-98DC-3ECE5D826446}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report.Api", "Report.Api\Report.Api.csproj", "{B3F647F4-86AA-4910-97EA-69D83B13CE04}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D423DAC-A70B-4A5A-98DC-3ECE5D826446}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D423DAC-A70B-4A5A-98DC-3ECE5D826446}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D423DAC-A70B-4A5A-98DC-3ECE5D826446}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D423DAC-A70B-4A5A-98DC-3ECE5D826446}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3F647F4-86AA-4910-97EA-69D83B13CE04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3F647F4-86AA-4910-97EA-69D83B13CE04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3F647F4-86AA-4910-97EA-69D83B13CE04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3F647F4-86AA-4910-97EA-69D83B13CE04}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
