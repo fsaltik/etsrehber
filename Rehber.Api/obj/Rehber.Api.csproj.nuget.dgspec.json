@@ -1,17 +1,92 @@
 {
   "format": 1,
   "restore": {
-    "/home/fsaltik/RiderProjects/EtsRehber/Rehber.Api/Rehber.Api.csproj": {}
+    "/home/fsaltik/RiderProjects/etsrehber/Rehber.Api/Rehber.Api.csproj": {}
   },
   "projects": {
-    "/home/fsaltik/RiderProjects/EtsRehber/Rehber.Api/Rehber.Api.csproj": {
+    "/home/fsaltik/RiderProjects/etsrehber/Rehber.Api/Rehber.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/fsaltik/RiderProjects/EtsRehber/Rehber.Api/Rehber.Api.csproj",
+        "projectUniqueName": "/home/fsaltik/RiderProjects/etsrehber/Rehber.Api/Rehber.Api.csproj",
         "projectName": "Rehber.Api",
-        "projectPath": "/home/fsaltik/RiderProjects/EtsRehber/Rehber.Api/Rehber.Api.csproj",
+        "projectPath": "/home/fsaltik/RiderProjects/etsrehber/Rehber.Api/Rehber.Api.csproj",
         "packagesPath": "/home/fsaltik/.nuget/packages/",
-        "outputPath": "/home/fsaltik/RiderProjects/EtsRehber/Rehber.Api/obj/",
+        "outputPath": "/home/fsaltik/RiderProjects/etsrehber/Rehber.Api/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/fsaltik/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/home/fsaltik/RiderProjects/etsrehber/Rehber.Data/Rehber.Data.csproj": {
+                "projectPath": "/home/fsaltik/RiderProjects/etsrehber/Rehber.Data/Rehber.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/home/fsaltik/.dotnet/sdk/6.0.101/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/home/fsaltik/RiderProjects/etsrehber/Rehber.Data/Rehber.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/fsaltik/RiderProjects/etsrehber/Rehber.Data/Rehber.Data.csproj",
+        "projectName": "Rehber.Data",
+        "projectPath": "/home/fsaltik/RiderProjects/etsrehber/Rehber.Data/Rehber.Data.csproj",
+        "packagesPath": "/home/fsaltik/.nuget/packages/",
+        "outputPath": "/home/fsaltik/RiderProjects/etsrehber/Rehber.Data/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/fsaltik/.nuget/NuGet/NuGet.Config"
@@ -38,9 +113,13 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
-            "Swashbuckle.AspNetCore": {
+            "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.2.3, )"
+              "version": "[6.0.1, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[6.0.2, )"
             }
           },
           "imports": [
@@ -54,9 +133,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
