@@ -10,5 +10,7 @@ public class AutoMapperProfiles : Profile
     {
         CreateMap<Person, PersonForCreateDto>();
         CreateMap<Contact, ContactForCreateDto>();
+        CreateMap<PersonForCreateDto, Person>();
+        CreateMap<ContactForCreateDto,Contact >();
     }
 }

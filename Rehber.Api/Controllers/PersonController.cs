@@ -1,5 +1,8 @@
+using System.Text;
+using System.Text.Json;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using RabbitMQ.Client;
 using Rehber.Infrastructure.Dtos;
 using Rehber.Infrastructure.Interfaces;
 using Rehber.Infrastructure.Models;
@@ -14,6 +17,7 @@ public class PersonController : Controller
     private readonly IContactRepository _contactRepository;
 
     private readonly IMapper _mapper;
+
     // GET
     public PersonController(IPersonRepository personRepository, IMapper mapper, IContactRepository contactRepository)
     {
@@ -22,7 +26,7 @@ public class PersonController : Controller
         _contactRepository = contactRepository;
     }
 
-    
+
     [HttpPost("create")]
     public async Task<IActionResult> Create(PersonForCreateDto personForCreateDto)
     {
@@ -30,71 +34,80 @@ public class PersonController : Controller
             return BadRequest("Person Name not exists");
 
         var personToCreate = _mapper.Map<Person>(personForCreateDto);
+        personToCreate.UUID = new Guid();
         personToCreate.CreatedAt=DateTime.Now;
 
         await _personRepository.Create(personToCreate);
 
         return Ok();
     }
-    
+
     [HttpPost("remove")]
     public async Task<IActionResult> RemovePerson(Guid id)
     {
-        if (id==null|| id==Guid.Empty)
+        if (id == null || id == Guid.Empty)
             return BadRequest("Invalid Id");
 
         await _personRepository.Delete(id);
 
         return Ok();
     }
-    
+
     [HttpPost("addcontactinfo")]
     public async Task<IActionResult> AddContactInfo(ContactForCreateDto contactForCreateDto)
     {
-        if (contactForCreateDto.Type==null || string.IsNullOrEmpty(contactForCreateDto.Detail))
+        if (contactForCreateDto.Type == null || string.IsNullOrEmpty(contactForCreateDto.Detail))
             return BadRequest("Invalid info");
 
         var contact = _mapper.Map<Contact>(contactForCreateDto);
         contact.PersonUUID = contactForCreateDto.PersonId;
+        contact.UUID = new Guid();
+        contact.CreatedAt=DateTime.Now;
         _contactRepository.Create(contact);
 
         return Ok();
     }
-    
+
     [HttpPost("removecontactinfo")]
     public async Task<IActionResult> RemoveContactInfo(Guid id)
     {
-        if (id==null|| id==Guid.Empty)
+        if (id == null || id == Guid.Empty)
             return BadRequest("Invalid Id");
 
         await _contactRepository.Delete(id);
 
         return Ok();
     }
-    
-    [HttpPost("getall")]
-    public async Task<IActionResult> GetAll()
+
+    [HttpGet("getall")]
+    public async Task<JsonResult> GetAll()
     {
-        return Ok(_personRepository.GetAll());
+        return new JsonResult(
+            _personRepository.GetAll(),
+            new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = null
+            });
     }
-    
-    [HttpPost("getpersoninfo")]
-    public async Task<IActionResult> getPersonInfo(Guid id)
+
+    [HttpGet("getpersoninfo")]
+    public async Task<JsonResult> getPersonInfo(Guid id)
     {
-        if (id==null|| id==Guid.Empty)
-            return BadRequest("Invalid Id");
-        
+        if (id == null || id == Guid.Empty)
+            return new JsonResult(
+                "Invalid Id",
+                new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = null
+                });
+
         var person = _personRepository.GetPersonAndContactsById(id);
 
-        if (person ==null)
-            return BadRequest("Invalid operation");
-        
-        return Ok();
-        
-    }
-    
-    public IActionResult Index()
-    {
-        return View();
+        return new JsonResult(
+            person,
+            new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = null
+            });
     }
 }
