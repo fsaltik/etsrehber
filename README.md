@@ -41,3 +41,6 @@ RabbitMQ.Client kutuphanesi eklendi.
 rabbitmq baglanti sirasinda hatalar olustugu icin kullanilan image degistirildi.
 sudo docker run -it --rm --name rabbitmq-test -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 
+dotnet ef migrations add CreateReportQueu --project ../Rehber.Data/Rehber.Data.csproj
+dotnet ef database update
+

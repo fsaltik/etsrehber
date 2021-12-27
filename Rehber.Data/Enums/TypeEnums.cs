@@ -8,4 +8,11 @@ public class TypeEnums
         EMail=2,
         Location=3
     }
+    
+    public enum ReportState
+    {
+        Queued=1,
+        Processing=2,
+        Done=3
+    }
 }
