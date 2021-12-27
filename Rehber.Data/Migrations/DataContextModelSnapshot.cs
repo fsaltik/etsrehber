@@ -43,7 +43,7 @@ namespace Rehber.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid?>("PersonUUID")
+                    b.Property<Guid>("PersonUUID")
                         .HasColumnType("uuid");
 
                     b.Property<int>("Type")
@@ -88,11 +88,33 @@ namespace Rehber.Infrastructure.Migrations
                     b.ToTable("Persons");
                 });
 
+            modelBuilder.Entity("Rehber.Infrastructure.Models.ReportQueu", b =>
+                {
+                    b.Property<Guid>("UUID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int>("State")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("UUID");
+
+                    b.ToTable("ReportQueus");
+                });
+
             modelBuilder.Entity("Rehber.Infrastructure.Models.Contact", b =>
                 {
                     b.HasOne("Rehber.Infrastructure.Models.Person", null)
                         .WithMany("Contacts")
-                        .HasForeignKey("PersonUUID");
+                        .HasForeignKey("PersonUUID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Rehber.Infrastructure.Models.Person", b =>

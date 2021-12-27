@@ -9,6 +9,7 @@ public class DataContext: DbContext
     
     public DbSet<Person> Persons { get; set; }
     public DbSet<Contact> Contacts { get; set; }
+    public DbSet<ReportQueu> ReportQueus { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
