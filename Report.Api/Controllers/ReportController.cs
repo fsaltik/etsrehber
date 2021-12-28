@@ -1,37 +1,41 @@
 using System.Text;
+using System.Text.Json;
+using Microsoft.AspNetCore.Mvc;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using Rehber.Infrastructure.Interfaces;
 
 namespace Report.Api.Controllers;
 
-public class ReportController
+public class ReportController :Controller
 {
+    private readonly IReportQueuRepository _reportQueuRepository;
 
-    public static void Main()
+    public ReportController(IReportQueuRepository reportQueuRepository)
     {
-        var factory = new ConnectionFactory() { HostName = "localhost" };
-        using(var connection = factory.CreateConnection())
-        using(var channel = connection.CreateModel())
-        {
-            channel.QueueDeclare(queue: "rehber",
-                durable: false,
-                exclusive: false,
-                autoDelete: false,
-                arguments: null);
-
-            var consumer = new EventingBasicConsumer(channel);
-            consumer.Received += (model, ea) =>
-            {
-                var body = ea.Body.ToArray();
-                var message = Encoding.UTF8.GetString(body);
-                Console.WriteLine(" [x] Received {0}", message);
-            };
-            channel.BasicConsume(queue: "rehber",
-                autoAck: true,
-                consumer: consumer);
-
-            Console.WriteLine(" Press [enter] to exit.");
-            Console.ReadLine();
-        }
+        _reportQueuRepository = reportQueuRepository;
     }
+
+    [HttpPost("getreportinfo")]
+    public async Task<JsonResult> GetReportInfo(Guid id)
+    {
+        return new JsonResult(
+            _reportQueuRepository.GetById(id),
+            new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = null
+            });
+    }
+
+    [HttpGet("getall")]
+    public async Task<JsonResult> GetAll()
+    {
+        return new JsonResult(
+            _reportQueuRepository.GetAll(),
+            new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = null
+            });
+    }
+
 }

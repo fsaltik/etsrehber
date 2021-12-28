@@ -29,7 +29,7 @@ public class ReportController : Controller
             CreatedAt = DateTime.Now
         };
 
-        await _reportQueuRepository.Create(reportQueu);
+         _reportQueuRepository.Create(reportQueu);
 
         var factory = new ConnectionFactory() { HostName = "localhost" };
         using(var connection = factory.CreateConnection())

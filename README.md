@@ -44,3 +44,6 @@ sudo docker run -it --rm --name rabbitmq-test -p 5672:5672 -p 15672:15672 rabbit
 dotnet ef migrations add CreateReportQueu --project ../Rehber.Data/Rehber.Data.csproj
 dotnet ef database update
 
+dotnet ef migrations add AddResultColumntoReportQueus --project ../Rehber.Data/Rehber.Data.csproj
+dotnet ef database update
+
