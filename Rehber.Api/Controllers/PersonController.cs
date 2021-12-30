@@ -3,6 +3,7 @@ using System.Text.Json;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using RabbitMQ.Client;
+using Rehber.Api.Extensions;
 using Rehber.Infrastructure.Dtos;
 using Rehber.Infrastructure.Interfaces;
 using Rehber.Infrastructure.Models;
@@ -15,7 +16,6 @@ public class PersonController : Controller
 {
     private readonly IPersonRepository _personRepository;
     private readonly IContactRepository _contactRepository;
-
     private readonly IMapper _mapper;
 
     // GET
@@ -34,8 +34,9 @@ public class PersonController : Controller
             return BadRequest("Person Name not exists");
 
         var personToCreate = _mapper.Map<Person>(personForCreateDto);
-        personToCreate.UUID = new Guid();
-        personToCreate.CreatedAt=DateTime.Now;
+        personToCreate.UUID =Guid.NewGuid(); 
+        personToCreate.CreatedAt=DateTime.Now.SetKindUtc();
+        personToCreate.UpdatedAt = personToCreate.UpdatedAt.SetKindUtc();
 
         await _personRepository.Create(personToCreate);
 
@@ -62,7 +63,8 @@ public class PersonController : Controller
         var contact = _mapper.Map<Contact>(contactForCreateDto);
         contact.PersonUUID = contactForCreateDto.PersonId;
         contact.UUID = new Guid();
-        contact.CreatedAt=DateTime.Now;
+        contact.CreatedAt=DateTime.Now.SetKindUtc();
+        contact.UpdatedAt= contact.UpdatedAt.SetKindUtc();
         _contactRepository.Create(contact);
 
         return Ok();
