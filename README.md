@@ -1,4 +1,4 @@
-# etsrehber
+# rehber
 
 Docker uzerinde calisacak sekilde Postgre veritabani ve rabbitmq mesaj kuyrugu calistirildi.
 
